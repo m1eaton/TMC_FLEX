@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" paddingRight="10"
+		  xmlns:components="net.taylorMadeContracting.components.*"
+		  paddingBottom="20">
+	<fx:Declarations>
+		<fx:XML id="homePagetxt" source="../resources/homePage.xml" />
+		<fx:XML id="homeServicestxt" source="../resources/homePageService.xml" />
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			
+			import flashx.textLayout.conversion.TextConverter;
+			
+			import mx.effects.WipeRight;
+			import mx.events.FlexEvent;
+			
+			import spark.effects.Wipe;
+			[Embed(source="../resources/images/base/TruckSideSMALL.png")]
+			[Bindable]
+			public var truckImg1:Class;
+
+			[Embed(source="../resources/images/base/PrincipeSideSMALL.png")]
+			[Bindable]
+			public var houseSide:Class;
+			
+			[Embed(source="../resources/images/base/CircleDriveSMALL.png")]
+			[Bindable]
+			public var sideTruck2:Class;
+			
+			override protected function createChildren():void
+			{
+				super.createChildren();
+				//imageGroup.setStyle("backgroundImage","../resources/images/base/HomeBackground2.jpg");
+				//var wipeRight:WipeRight = new WipeRight();
+				//wipeRight.direction = "right";
+				//wipeRight.duration = 1000;
+				//this.addEventListener(FlexEvent.SHOW,show,false,0,true);
+			}
+			
+			
+			protected function angiesListClick(event:MouseEvent):void
+			{
+				var aListUrl:URLRequest = new URLRequest;
+				aListUrl.url = "http://www.angieslist.com";
+				navigateToURL(aListUrl);
+				trace("Here");
+				
+			}
+			
+			protected function serviceMgic(event:MouseEvent):void
+			{
+				
+				var aListUrl:URLRequest = new URLRequest;
+				aListUrl.url = "http://www.servicemagic.com/rated.TaylorMadeContracting.21029901.html#ratings";
+				navigateToURL(aListUrl);
+				
+			}
+			
+			
+			protected function BBBclickHandler(event:MouseEvent):void
+			{
+				var aListUrl:URLRequest = new URLRequest;
+				aListUrl.url = "http://www.bbb.org/boston/Business-Reviews/home-improvements/taylor-made-contracting-llc-in-weymouth-ma-98816/bbb-rating";
+				navigateToURL(aListUrl);
+			}
+			
+		]]>
+	</fx:Script>
+	
+    <s:HGroup id="mainBox" width="100%" height="100%">
+		<s:VGroup id="detailsBox" height="100%" width="75%" horizontalAlign="left" gap="2" paddingLeft="15">
+	    	<s:Spacer height="15"/>
+			<mx:HRule width="100%" height="4"/>
+			<s:Label fontSize="22" fontStyle="normal" fontWeight="bold" color="#bc1d1d" paddingLeft="0" paddingTop="10" paddingBottom="10"
+			 text="Construction Services Taylored to your Needs"/>
+			<mx:HRule width="100%" height="4"/>
+			<s:Spacer height="15"/>
+			<s:RichEditableText id="richText" editable="false" width="100%" textAlign="justify" paddingRight="10"
+								textFlow="{TextConverter.importToFlow(homePagetxt,TextConverter.TEXT_LAYOUT_FORMAT)}"/>
+			<s:HGroup id="serviceVideoGroup" width="100%" gap="2">
+				<s:RichEditableText id="richTextServices" editable="false" textAlign="justify"
+									textFlow="{TextConverter.importToFlow(homeServicestxt,TextConverter.TEXT_LAYOUT_FORMAT)}"/>
+				<!--<s:Spacer width="75%"/>
+				<s:BorderContainer  id="videoBox" width="420" height="320" backgroundColor="#bc1d1d" cornerRadius="2" 
+									borderWeight="2">
+					<s:layout>
+						<s:VerticalLayout 
+							paddingLeft="5" paddingRight="5" 
+							paddingTop="5" paddingBottom="5" verticalAlign="middle" horizontalAlign="center"/>
+					</s:layout>
+					<s:VideoPlayer id="video"
+								   width="400"
+								   height="300"
+								   autoPlay="false"
+								   source="../resources/assets/POW.MP4"/>
+				</s:BorderContainer> -->
+			</s:HGroup>
+		    <s:Spacer height="100%"/>			
+			<s:BorderContainer  id="linkBox"  width="100%" height="35" backgroundColor="#bc1d1d" cornerRadius="2"
+								borderWeight="2">
+				<s:layout>
+					<s:HorizontalLayout 
+						paddingLeft="5" paddingRight="5" 
+						paddingTop="5" paddingBottom="5" verticalAlign="middle"/>
+				</s:layout>
+				<mx:LinkButton id="linkButton1" label="Service Magic Rating" color="white" click="serviceMgic(event)"/>
+				<mx:LinkButton id="linkButton2" label="On Angies List" color="white" click="angiesListClick(event)"/>
+				<mx:LinkButton id="BBB" label="BBB Rating" color="white" click="BBBclickHandler(event)"/>
+			</s:BorderContainer> 	
+		</s:VGroup>
+		<s:VGroup width="25%" height="100%">
+		    <s:Spacer height="12"/>
+			<s:BorderContainer  id="imageBox"  width="100%" backgroundColor="#bc1d1d" cornerRadius="2"
+							borderWeight="2">
+			<s:layout>
+				<s:VerticalLayout 
+					paddingLeft="5" paddingRight="5" 
+					paddingTop="5" paddingBottom="5" verticalAlign="middle"/>
+			</s:layout>
+			<s:Image id="sidetruck1Img" source="{truckImg1}"/>
+			<s:Image id="sidehouseImg" source="{houseSide}"/>
+			<s:Image id="sidetruck2Img" source="{sideTruck2}"/>
+			</s:BorderContainer>
+		</s:VGroup>
+	</s:HGroup>	
+</mx:VBox>

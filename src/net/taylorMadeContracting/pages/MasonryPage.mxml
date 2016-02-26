@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+	<fx:Declarations>
+		<s:ArrayCollection id="dataSet">
+			<fx:String>../resources/images/masonry/M1.png</fx:String>		
+			<fx:String>../resources/images/masonry/M2.png</fx:String>
+			<fx:String>../resources/images/masonry/M3.png</fx:String>
+			<fx:String>../resources/images/masonry/M4.png</fx:String>
+			<fx:String>../resources/images/masonry/M5.png</fx:String>
+		</s:ArrayCollection>
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import net.taylorMadeContracting.components.DisplayShelf;
+			
+			public var shelf:DisplayShelf;
+			
+			override protected function createChildren():void
+			{
+				shelf = new DisplayShelf();
+				shelf.setStyle("borderColor","#bc1d1d");
+				shelf.setStyle("borderThickness","10");
+				shelf.percentWidth = 100;
+				shelf.percentHeight = 100;
+				shelf.dataProvider = dataSet;
+				shelf.enableHistory = false;
+				shelf.horizontalCenter = "0";
+				shelf.verticalCenter="0";
+				
+				this.addChild(shelf);
+			}
+			
+			
+			
+		]]>
+	</fx:Script>
+	
+	
+</mx:VBox>

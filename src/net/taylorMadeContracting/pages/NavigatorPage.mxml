@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  borderStyle="inset"
+		  backgroundColor="White"
+		  borderWeight="2">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.containers.ViewStack;
+			import mx.effects.WipeRight;
+			[Bindable]
+			private var _buttonHeight:Number = 45;
+			[Bindable]
+			private var _fontSize:Number = 13;
+			[Bindable]
+			private var _textAlighn:String = "left";
+			
+			private var _viewStack:ViewStack;
+			private var _homePage:HomePage;
+			private var _pavingPage:AsphaultPage;
+			private var _contractingPage:ContractingPage;
+			private var _homeImprovementsPage:ContactPage;
+			private var _landscapeConstructionPage:LandscapeConstructionPage;
+			private var _masonryPage:MasonryPage;
+			private var _currentButton:Button;
+
+		
+			
+			override protected function createChildren():void
+			{
+				super.createChildren();
+				 _viewStack = new ViewStack();
+				_viewStack.percentWidth = 100;
+				_viewStack.percentHeight = 100;
+				_viewStack.setStyle("borderStyle","solid");
+				_viewStack.setStyle("color","0x323232");
+				// Create The pages
+				
+				var wipeRight:WipeRight = new WipeRight();
+				wipeRight.duration = 1000;
+				
+				_homePage = new HomePage();
+				_homePage.setStyle("hideEffect",wipeRight);
+				_homePage.setStyle("showEffect",wipeRight);
+				_pavingPage = new AsphaultPage();
+				_pavingPage.setStyle("hideEffect",wipeRight);
+				_pavingPage.setStyle("showEffect",wipeRight);
+				_contractingPage = new ContractingPage;
+				_contractingPage.setStyle("hideEffect",wipeRight);
+				_contractingPage.setStyle("showEffect",wipeRight);
+				_homeImprovementsPage = new ContactPage;
+				_homeImprovementsPage.setStyle("hideEffect",wipeRight);
+				_homeImprovementsPage.setStyle("showEffect",wipeRight);
+				_landscapeConstructionPage =  new LandscapeConstructionPage();
+				_landscapeConstructionPage.setStyle("hideEffect",wipeRight);
+				_landscapeConstructionPage.setStyle("showEffect",wipeRight);
+				_masonryPage = new MasonryPage();
+				_masonryPage.setStyle("hideEffect",wipeRight);
+				_masonryPage.setStyle("showEffect",wipeRight);
+				
+				//Add the Pages
+				_viewStack.addChild(_homePage); //0
+				_viewStack.addChild(_pavingPage); //1
+				_viewStack.addChild(_contractingPage); //2
+				_viewStack.addChild(_homeImprovementsPage); //3
+				_viewStack.addChild(_landscapeConstructionPage); //4
+				_viewStack.addChild(_masonryPage); //5
+				this.addElement(_viewStack); 
+			    _viewStack.selectedIndex = 0;
+				homeButton.setStyle("color","Red");
+				_currentButton = homeButton;
+				
+				
+				trace("Create Children complete in Naviagtion Page");
+			 }
+					
+			
+			protected function changeSelectedButtonTextColor(currentButton:Button, newSelection:Button):void
+			{
+				//_currentButton = currentButton;
+				currentButton.setStyle("color","Black");
+				_currentButton = newSelection;
+				_currentButton.setStyle("color","Red");
+			}
+			
+			override protected function commitProperties():void
+			{
+			    super.commitProperties();
+			}
+			
+			
+			protected function clickHandler(event:MouseEvent):void
+			{
+                try{
+					var obj:Object = event.currentTarget;
+					if(obj.id == "contractButton")
+					{
+						_viewStack.selectedIndex = 2
+						//changeSelectedButtonTextColor(_currentButton,contractButton);
+					}
+					else if(obj.id == "homeButton")
+					{
+						_viewStack.selectedIndex = 0;
+						changeSelectedButtonTextColor(_currentButton,homeButton);
+					}
+					else if(obj.id == "homeImprovementsButton")
+					{
+						_viewStack.selectedIndex = 3;
+						changeSelectedButtonTextColor(_currentButton,homeImprovementsButton);
+					}
+					else if(obj.id == "asphaultButton")
+					{
+						_viewStack.selectedIndex = 1;
+						changeSelectedButtonTextColor(_currentButton,asphaultButton);
+					}
+					else if(obj.id == "masonryButton")
+					{
+						_viewStack.selectedIndex = 5;
+						changeSelectedButtonTextColor(_currentButton,masonryButton);
+					}
+					else if(obj.id == "landscapeButton")
+					{
+						_viewStack.selectedIndex = 4;
+						//changeSelectedButtonTextColor(_currentButton,landscapeButton);
+					}
+					else
+					{
+					    //DEFAULT TO HOME PAGE
+						_viewStack.selectedIndex = 0;
+						changeSelectedButtonTextColor(_currentButton,homeButton);
+					}
+				}
+				catch(err:Error)
+				{
+					
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="top"  horizontalAlign="left" gap="1" paddingLeft="1" paddingRight="1"  paddingTop="1" paddingBottom="1"/>
+	</s:layout>
+	<s:BorderContainer id="buttonBar" width="100%" height="{_buttonHeight+4}" borderStyle="solid" backgroundColor="Red">
+		<s:Button id="homeButton" width="100%" label="Home" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="left" click="clickHandler(event)"/>
+		<!-- <s:Button id="contractButton" width="100%" label="General Contracting" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/> -->
+		<s:Button id="asphaultButton" width="100%" label="Asphalt Projects" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/>
+		<s:Button id="masonryButton" width="100%" label="Concrete and Masonry Projects" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/>
+		<s:Button id="homeImprovementsButton" width="100%" label="Contact Us" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/>
+		<!-- <s:Button id="asphaultButton" width="100%" label="Asphalt Services" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/> -->
+		<!-- <s:Button id="masonryButton" width="100%" label="Concrete and Masonry" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/>
+		<s:Button id="landscapeButton" width="100%" label="Landscape Construction" fontSize="{_fontSize}" height="{_buttonHeight}" textAlignLast="{_textAlighn}" click="clickHandler(event)"/> -->
+		<s:layout>
+			<s:HorizontalLayout verticalAlign="top"  horizontalAlign="left" gap="1" paddingLeft="1" paddingRight="1" paddingTop="1" paddingBottom="1"/>
+		</s:layout>
+	</s:BorderContainer>
+</s:BorderContainer>

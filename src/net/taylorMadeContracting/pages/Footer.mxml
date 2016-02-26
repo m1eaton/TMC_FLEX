@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%"
+		 color="white" backgroundColor="#bc1d1d" horizontalAlign="center" paddingLeft="5" paddingRight="5"
+		 verticalAlign="middle">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			[Embed(source="../resources/images/logos/bbb.jpg")]
+			[Bindable]
+			public var bbbImg:Class;
+			
+			[Embed(source="../resources/images/base/AngiesList.png")]
+			[Bindable]
+			public var angImg:Class;
+			
+			[Embed(source="../resources/images/base/sm.png")]
+			[Bindable]
+			public var sm:Class;
+			
+			override protected function createChildren():void
+			{
+			    super.createChildren();	
+			}
+			
+
+			
+			protected function BBBClick(event:MouseEvent):void
+			{
+															
+			}
+														   
+			protected function sendEmail(event:MouseEvent):void
+			{
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:Image id="BBBImage" source="{bbbImg}"/>
+	<!-- <s:Image id="AListImage" source="{angImg}"/>
+	<s:Image id="smagic" source="{sm}"/> -->
+	<s:Spacer width="100%"/>
+	<mx:Label id="emailLabel" color="white" text="Mike@TaylorMadeContracting.net"/>
+	<!--<mx:LinkButton id="email" color="white" label="taylormadecontracting.net" click="sendEmail(event)"/> -->
+	<!-- <mx:LinkButton id="BBButton" label="Contact Us" click="BBBClick(event)"/> -->
+</mx:HBox>

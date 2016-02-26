@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- externalTextFlow.xml -->
+<TextFlow xmlns="http://ns.adobe.com/textLayout/2008">
+    <p fontSize="24">Taylor Made Contracting is a full service construction company.</p>
+    <br></br>
+    <p fontSize="16"> Taylor Made Contracting (TMC) stands for quality and efficiency since 2003.
+    My company provides contracting services for both commercial and residential clients.
+	The goal of all of our projects is to finish on time and within budget in order to meet our clients expectations. 
+	Our location is Weymouth Massachusetts and we operate with pride in this region to keep business
+	and neighborhoods a wonderful place to live. Please feel free to contact me for any of your service needs</p>	
+</TextFlow> 
+
+

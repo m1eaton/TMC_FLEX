@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- externalTextFlow.xml -->
+<TextFlow xmlns="http://ns.adobe.com/textLayout/2008">
+	<p></p>
+	<p></p>
+	<p fontSize="24">Service We Provide</p>
+	<p></p>
+	<p fontSize="16">* Home Improvements</p>
+	<p fontSize="16">* Landscape Construction</p>
+	<p fontSize="16">* General Contracting Services</p>
+	<p fontSize="16">* Concrete Construction</p>
+	<p fontSize="16">* Paving and Asphalt Services</p>
+	<p fontSize="16">* Snow Removal</p>		
+</TextFlow> 
+

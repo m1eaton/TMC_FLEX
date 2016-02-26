@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"  
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:pages="net.taylorMadeContracting.pages.*"
+			   width="100%"
+			   height="100%"
+			   backgroundColor="White"
+			   creationComplete="ccomplete()">
+	<fx:Script>
+		<![CDATA[
+			import mx.logging.Log;
+			import mx.logging.LogEventLevel;
+			import mx.logging.targets.TraceTarget;
+			
+			import spark.components.BorderContainer;
+			
+
+			private var _header:BorderContainer;
+			private var _footer:BorderContainer
+			
+			override protected function createChildren():void
+			{
+				super.createChildren();
+			    //viewport="{centerContainer}"
+			}
+			
+			private function ccomplete():void
+			{
+				var logTarget:TraceTarget = new TraceTarget();
+				logTarget.filters=["mx.rpc.*","mx.messaging.*","mx.data.*"];
+				logTarget.level = LogEventLevel.ALL;
+				
+				// Add date, time, category, and log level to the output.
+				logTarget.includeDate = true;
+				logTarget.includeTime = true;
+				logTarget.includeCategory = true;
+				logTarget.includeLevel = true;
+				
+				// Begin logging.
+				Log.addTarget(logTarget);
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:VGroup id="centerContainer" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">		
+		<s:HGroup id="mainHPage">
+		<s:VGroup id="mainPage" width="1066" height="850" paddingBottom="0" paddingTop="0" gap="0">
+			<pages:Header id="header"/>
+	        <mx:HRule id="topRule" width="100%" height="1%"/>
+			<pages:NavigatorPage id="navigstion" width="100%" height="100%"/>
+			<mx:HRule id="BottomRule" width="100%" height="1%"/>
+			<pages:Footer id="Footer" horizontalAlign="center" width="100%"/>
+		</s:VGroup>
+		<s:VScrollBar id="verticalScroll" viewport="{centerContainer}" height="100%" />	
+		</s:HGroup>
+	</s:VGroup>
+</s:Application>
